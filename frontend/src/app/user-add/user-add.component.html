@@ -1,0 +1,44 @@
+<div id="newUserModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{title}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input [(ngModel)]="user.name" type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                  <label for="group">Group</label>
+                  <input [(ngModel)]="user.group" type="text" class="form-control" id="group" name="group" placeholder="Group">
+                </div>
+                <div class="form-group">
+                  <label for="role">Role</label>
+                  <input [(ngModel)]="user.role" type="text" class="form-control" id="role" name="role" placeholder="role">
+                </div>
+
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                      <input type="checkbox" name="permissions" [(ngModel)]="permissions.create"> Create
+                  </label>
+                  <label class="checkbox-inline">
+                      <input type="checkbox" name="permissions" [(ngModel)]="permissions.update"> Update
+                  </label>
+                  <label class="checkbox-inline">
+                      <input type="checkbox" name="permissions" [(ngModel)]="permissions.delete"> Delete
+                  </label>
+              </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="createUser()" class="btn btn-primary" data-dismiss="modal">Create</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

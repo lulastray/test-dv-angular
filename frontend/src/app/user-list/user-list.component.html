@@ -1,27 +1,37 @@
 <main class="container">
-    <div class="card mt-5">
-      <h5 class="card-header bk-color text-center">{{title}}</h5>
-      <div class="card-body table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Group</th>
-              <th scope="col">Role</th>
-              <th scope="col">Permissions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of users" (click)="goToUserDetail(user.id)">
-              <th scope="row">{{ user.id }}</th>
-              <td>{{ user.name }}</td>
-              <td>{{ user.group }}</td>
-              <td>{{ user.role }}</td>
-              <td>{{ user.permissions }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="card mt-5">
+    <h5 class="card-header bk-color text-center">{{ title }}</h5>
+    <div class="card-body table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Group</th>
+            <th scope="col">Role</th>
+            <th scope="col">Permissions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users" (click)="goToUserDetail(user.id)">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.name }}</td>
+            <td>{{ user.group }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.permissions }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </main>
+    <div class="card-footer">
+      <button
+        data-toggle="modal"
+        data-target="#newUserModal"
+        class="btn btn-lg bk-color mx-auto"
+      >
+        Add new user
+      </button>
+      <UserAdd> </UserAdd>
+    </div>
+  </div>
+</main>
