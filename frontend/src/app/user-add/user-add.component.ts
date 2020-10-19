@@ -1,6 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
-import { EventEmitter } from "protractor";
 import { User } from "../core/models/User";
 import { UsersService } from "../core/services/users.service";
 
@@ -11,6 +10,7 @@ import { UsersService } from "../core/services/users.service";
 })
 export class UserAddComponent implements OnInit {
 
+  @Output() refreshUsers = new EventEmitter()
   user: User = new User();
 
   permissions = {
@@ -30,13 +30,22 @@ export class UserAddComponent implements OnInit {
       }
     }
     this.service.createUser(this.user).subscribe((res) => {
-      console.log(res)})
-      // this.refreshUsers});
+      this.refreshUsers.emit();
+      this.clearForm()
+    })
   }
 
   private capitalize(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
+  private clearForm():void{
+    this.user= new User();
+    this.permissions = {
+      create: false,
+      update: false,
+      delete: false,
+    };
+  }
   
 }
