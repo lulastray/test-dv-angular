@@ -1,0 +1,9 @@
+.bd-side {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 700px) {
+  .bd-side {
+    height: 100vh;
+  }
+}

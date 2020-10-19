@@ -13,5 +13,9 @@ export class UsersService {
     getUsers(): Observable<any>{
       return this.http.get<any>(`${this.BASE_URL}/`)
     }
+
+    getOneUser(id:number) :Observable<any>{
+      return this.http.get<any>(`${this.BASE_URL}/${id}`)
+    }
   
 }

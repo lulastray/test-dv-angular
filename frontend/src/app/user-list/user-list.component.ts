@@ -20,12 +20,18 @@ export class UserListComponent implements OnInit {
   }
 
   private getUsers(): void {
-    this.service.getUsers().subscribe((res) => (this.users = res.data.map(user => {
-      return {
-        ...user,
-        permissions : user.permissions.join(", ")
-      }
+    this.service.getUsers().subscribe(
+      (res) =>
+        (this.users = res.data.map((user) => {
+          return {
+            ...user,
+            permissions: user.permissions.join(", "),
+          };
+        }))
+    );
+  }
 
-    })));
+  private goToUserDetail(id: number): void {
+    this.router.navigate([`/${id}`]);
   }
 }
